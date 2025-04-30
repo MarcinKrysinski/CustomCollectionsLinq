@@ -1,0 +1,35 @@
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Build folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Rider specific
+/shelf/
+/workspace.xml
+/modules.xml
+/contentModel.xml
+/projectSettingsUpdater.xml
+/httpRequests/
+/dataSources/
+/dataSources.local.xml
+
+# NuGet
+*.nupkg
+packages/
+
+# VS Code
+.vscode/

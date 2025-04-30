@@ -1,0 +1,46 @@
+﻿//1
+List<int> liczby = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+var parzyste = liczby.Where(x => x % 2 == 0);
+Console.WriteLine(string.Join(", ", parzyste));
+
+//2
+List<string> imiona = { "Anna", "Krzysztof", "Jan", "Aleksandra", "Tomek" };
+var dlugieImiona = imiona.Where(imie => imie.Length > 5);
+Console.WriteLine(string.Join(", ", dlugieImiona));
+
+//3
+List<int> liczby = { 15, 42, 7, 89, 23, 56, 12, 78 };
+var top3 = liczby.OrderByDescending(x => x).Take(3);
+Console.WriteLine(string.Join(", ", top3));
+
+//4
+List<Student> studenci = new List<Student>
+{
+    new Student { Imie = "Anna", Wiek = 20, Ocena = 4.5 },
+    new Student { Imie = "Jan", Wiek = 22, Ocena = 3.8 },
+    new Student { Imie = "Piotr", Wiek = 20, Ocena = 4.2 },
+    new Student { Imie = "Ewa", Wiek = 22, Ocena = 4.8 },
+    new Student { Imie = "Marek", Wiek = 21, Ocena = 3.5 }
+};
+
+var grupy = studenci.GroupBy(s => s.Wiek)
+    .Select(g => new { Wiek = g.Key, LiczbaStudentow = g.Count() });
+
+foreach (var grupa in grupy)
+{
+    Console.WriteLine($"Wiek: {grupa.Wiek}, Liczba studentów: {grupa.LiczbaStudentow}");
+}
+
+// 5
+var najlepsiStudenci = studenci
+    .GroupBy(s => s.Wiek)
+    .Select(g => new 
+    {
+        Wiek = g.Key,
+        NajlepszyStudent = g.OrderByDescending(s => s.Ocena).First()
+    });
+
+foreach (var grupa in najlepsiStudenci)
+{
+    Console.WriteLine($"Wiek: {grupa.Wiek}, Najlepszy student: {grupa.NajlepszyStudent.Imie} ({grupa.NajlepszyStudent.Ocena})");
+}
